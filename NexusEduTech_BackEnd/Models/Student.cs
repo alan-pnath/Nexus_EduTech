@@ -1,8 +1,8 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+
 namespace NexusEduTech_BackEnd.Models
 {
-   
     public class Student
     {
         [Required]
@@ -14,11 +14,11 @@ namespace NexusEduTech_BackEnd.Models
         [Required]
         public int ClassRoomId { get; set; }
 
-       // [ForeignKey("ClassRoomId")]
-       // public Classes? ClassRoomId { get; set; }
-       
+        // [ForeignKey("ClassRoomId")]
+        // public Classes? ClassRoomId { get; set; }
+
         [Required]
-        [Column("Registration Number",TypeName ="varchar")]
+        [Column("Registration Number", TypeName = "varchar")]
         [StringLength(50)]
         public string RegistrationNumber { get; set; }
     }
