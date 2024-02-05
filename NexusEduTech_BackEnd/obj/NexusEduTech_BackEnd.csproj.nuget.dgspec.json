@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\aprasena\\Training\\Nexus_EduTech\\NexusEduTech_BackEnd\\NexusEduTech_BackEnd.csproj": {}
+    "C:\\Mubeena\\Nexus_EduTech\\Nexus_EduTech\\NexusEduTech_BackEnd\\NexusEduTech_BackEnd.csproj": {}
   },
   "projects": {
-    "C:\\Users\\aprasena\\Training\\Nexus_EduTech\\NexusEduTech_BackEnd\\NexusEduTech_BackEnd.csproj": {
+    "C:\\Mubeena\\Nexus_EduTech\\Nexus_EduTech\\NexusEduTech_BackEnd\\NexusEduTech_BackEnd.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\aprasena\\Training\\Nexus_EduTech\\NexusEduTech_BackEnd\\NexusEduTech_BackEnd.csproj",
+        "projectUniqueName": "C:\\Mubeena\\Nexus_EduTech\\Nexus_EduTech\\NexusEduTech_BackEnd\\NexusEduTech_BackEnd.csproj",
         "projectName": "NexusEduTech_BackEnd",
-        "projectPath": "C:\\Users\\aprasena\\Training\\Nexus_EduTech\\NexusEduTech_BackEnd\\NexusEduTech_BackEnd.csproj",
-        "packagesPath": "C:\\Users\\aprasena\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\aprasena\\Training\\Nexus_EduTech\\NexusEduTech_BackEnd\\obj\\",
+        "projectPath": "C:\\Mubeena\\Nexus_EduTech\\Nexus_EduTech\\NexusEduTech_BackEnd\\NexusEduTech_BackEnd.csproj",
+        "packagesPath": "C:\\Users\\mmuhamme\\.nuget\\packages\\",
+        "outputPath": "C:\\Mubeena\\Nexus_EduTech\\Nexus_EduTech\\NexusEduTech_BackEnd\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\aprasena\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\mmuhamme\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
