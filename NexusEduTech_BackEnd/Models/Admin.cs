@@ -1,10 +1,11 @@
 
-﻿using System.ComponentModel.DataAnnotations;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace NexusEduTech_BackEnd.Models
 {
-   
+
 
     [Table("tbl_CustomUser")]
     public class CustomUser
@@ -16,10 +17,15 @@ namespace NexusEduTech_BackEnd.Models
         public int UserId { get; set; }
 
 
-        [Required(ErrorMessage = "Enter Valid User Name")]
+        [Required(ErrorMessage = "Enter Valid UserName")]
         [Column("UserName", TypeName = "varchar")]
         [StringLength(50)]
         public string UserName { set; get; }
+
+        [Required(ErrorMessage = "Enter Valid Password")]
+        [Column("Password", TypeName = "varchar")]
+        [StringLength(50)]
+        public string Password { set; get; }
 
         [Required(ErrorMessage = "Enter Valid First Name")]
         [Column("FName", TypeName = "varchar")]
@@ -34,9 +40,10 @@ namespace NexusEduTech_BackEnd.Models
         [Required(ErrorMessage = "Enter Valid Gender")]
         [Column("Gender", TypeName = "varchar")]
         [StringLength(10)]
-        public string Sex { set; get; }
+        public string Gender { set; get; }
 
         [Required(ErrorMessage = "Enter Valid DOB")]
+        [Column("DOB",TypeName ="Date")]
         public DateTime DOB { set; get; }
 
         [Required(ErrorMessage = "Enter Valid Address")]
@@ -59,6 +66,23 @@ namespace NexusEduTech_BackEnd.Models
 
     }
 
+    [Table("tbl_UserAuthenticate")]
+    public class UserAuthenticate
+    {
+        [Key]
+        public Guid id { set; get; }
 
+        [Required]
+        [StringLength(50)]
+        public string username { set; get; }
+
+        [Required]
+        [StringLength(50)]
+        public string Password { set; get; }
+
+        [Required]
+        [StringLength(10)]
+        public string role { set; get; }
+    }
 }
 

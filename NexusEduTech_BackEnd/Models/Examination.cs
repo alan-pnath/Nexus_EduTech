@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace NexusEduTech_BackEnd.Models
 {
+    [Table("tbl_Exam")]
     public class Examination
     {
         [Key]
@@ -20,7 +21,8 @@ namespace NexusEduTech_BackEnd.Models
         [Column("Max_Mark", TypeName = "int")]
         public int Max_Mark { get; set; }
 
+        public int ClassId { get; set; }
         [ForeignKey("ClassId")]
-        public Classess? ClassId { get; set; }
-}
+        public Classess? class_Id { get; set; }
+    }
 }

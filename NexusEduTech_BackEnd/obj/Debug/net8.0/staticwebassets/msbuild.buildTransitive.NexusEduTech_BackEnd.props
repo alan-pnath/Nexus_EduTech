@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\NexusEduTech_BackEnd.props" />
+</Project>

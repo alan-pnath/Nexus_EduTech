@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace NexusEduTech_BackEnd.Models
 {
+    [Table("tbl_classess")]
     public class Classess
     {
         [Key]
