@@ -59,7 +59,7 @@ namespace NexusEduTech_BackEnd.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Exams",
+                name: "tbl_Exam",
                 columns: table => new
                 {
                     ExamId = table.Column<int>(type: "int", nullable: false),
@@ -70,9 +70,9 @@ namespace NexusEduTech_BackEnd.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Exams", x => x.ExamId);
+                    table.PrimaryKey("PK_tbl_Exam", x => x.ExamId);
                     table.ForeignKey(
-                        name: "FK_Exams_tbl_classess_ClassId",
+                        name: "FK_tbl_Exam_tbl_classess_ClassId",
                         column: x => x.ClassId,
                         principalTable: "tbl_classess",
                         principalColumn: "ClassId",
@@ -88,7 +88,9 @@ namespace NexusEduTech_BackEnd.Migrations
                     UserId = table.Column<int>(type: "int", nullable: false),
                     ClassRoomId = table.Column<int>(type: "int", nullable: false),
                     ClassId = table.Column<int>(type: "int", nullable: false),
-                    RegistrationNumber = table.Column<string>(name: "Registration Number", type: "varchar(50)", maxLength: 50, nullable: false)
+                    RegistrationNumber = table.Column<string>(name: "Registration Number", type: "varchar(50)", maxLength: 50, nullable: false),
+                    Std = table.Column<string>(type: "varchar(2)", maxLength: 2, nullable: false),
+                    Section = table.Column<string>(type: "varchar(1)", maxLength: 1, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -134,10 +136,35 @@ namespace NexusEduTech_BackEnd.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "tbl_Marks",
+                columns: table => new
+                {
+                    MarkId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    StudentId = table.Column<int>(type: "int", nullable: false),
+                    ExamId = table.Column<int>(type: "int", nullable: false),
+                    Mark = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_tbl_Marks", x => x.MarkId);
+                    table.ForeignKey(
+                        name: "FK_tbl_Marks_tbl_Student_StudentId",
+                        column: x => x.StudentId,
+                        principalTable: "tbl_Student",
+                        principalColumn: "StudentId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
-                name: "IX_Exams_ClassId",
-                table: "Exams",
+                name: "IX_tbl_Exam_ClassId",
+                table: "tbl_Exam",
                 column: "ClassId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_tbl_Marks_StudentId",
+                table: "tbl_Marks",
+                column: "StudentId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_tbl_Student_ClassId",
@@ -164,16 +191,19 @@ namespace NexusEduTech_BackEnd.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Exams");
+                name: "tbl_Exam");
 
             migrationBuilder.DropTable(
-                name: "tbl_Student");
+                name: "tbl_Marks");
 
             migrationBuilder.DropTable(
                 name: "tbl_Teacher");
 
             migrationBuilder.DropTable(
                 name: "tbl_UserAuthenticate");
+
+            migrationBuilder.DropTable(
+                name: "tbl_Student");
 
             migrationBuilder.DropTable(
                 name: "tbl_CustomUser");

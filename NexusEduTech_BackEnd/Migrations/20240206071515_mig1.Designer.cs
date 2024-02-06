@@ -12,8 +12,8 @@ using NexusEduTech_BackEnd.Models;
 namespace NexusEduTech_BackEnd.Migrations
 {
     [DbContext(typeof(MyContext))]
-    [Migration("20240205120621_migration3")]
-    partial class migration3
+    [Migration("20240206071515_mig1")]
+    partial class mig1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -176,6 +176,18 @@ namespace NexusEduTech_BackEnd.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("varchar")
                         .HasColumnName("Registration Number");
+
+                    b.Property<string>("Section")
+                        .IsRequired()
+                        .HasMaxLength(1)
+                        .HasColumnType("varchar")
+                        .HasColumnName("Section");
+
+                    b.Property<string>("Std")
+                        .IsRequired()
+                        .HasMaxLength(2)
+                        .HasColumnType("varchar")
+                        .HasColumnName("Std");
 
                     b.Property<int>("UserId")
                         .HasColumnType("int");

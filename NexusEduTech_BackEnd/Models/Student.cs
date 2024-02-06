@@ -24,6 +24,21 @@ namespace NexusEduTech_BackEnd.Models
         [Column("Registration Number", TypeName = "varchar")]
         [StringLength(50)]
         public string RegistrationNumber { get; set; }
+
+
+
+        [Required(ErrorMessage = "Enter Valid Std")]
+        [Column("Std", TypeName = "varchar")]
+        [StringLength(2)]
+        [RegularExpression("[1-12]", ErrorMessage = "Invalid Std")]
+        public string Std { set; get; }
+
+        [Required(ErrorMessage = "Enter Valid Section ")]
+        [Column("Section", TypeName = "varchar")]
+        [StringLength(1)]
+        [RegularExpression("[A-Z]", ErrorMessage = "Invalid Section")]
+        public string Section { set; get; }
+
     }
 
 

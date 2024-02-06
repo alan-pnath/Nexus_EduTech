@@ -135,3 +135,4 @@ C:\Users\aprasena\Training\Nexus_EduTech\NexusEduTech_BackEnd\obj\Debug\net8.0\r
 C:\Users\aprasena\Training\Nexus_EduTech\NexusEduTech_BackEnd\obj\Debug\net8.0\NexusEduTech_BackEnd.pdb
 C:\Users\aprasena\Training\Nexus_EduTech\NexusEduTech_BackEnd\obj\Debug\net8.0\NexusEduTech_BackEnd.genruntimeconfig.cache
 C:\Users\aprasena\Training\Nexus_EduTech\NexusEduTech_BackEnd\obj\Debug\net8.0\ref\NexusEduTech_BackEnd.dll
+C:\Users\aprasena\Training\Nexus_EduTech\NexusEduTech_BackEnd\bin\Debug\net8.0\AutoMapper.dll

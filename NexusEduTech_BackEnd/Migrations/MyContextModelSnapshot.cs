@@ -174,6 +174,18 @@ namespace NexusEduTech_BackEnd.Migrations
                         .HasColumnType("varchar")
                         .HasColumnName("Registration Number");
 
+                    b.Property<string>("Section")
+                        .IsRequired()
+                        .HasMaxLength(1)
+                        .HasColumnType("varchar")
+                        .HasColumnName("Section");
+
+                    b.Property<string>("Std")
+                        .IsRequired()
+                        .HasMaxLength(2)
+                        .HasColumnType("varchar")
+                        .HasColumnName("Std");
+
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
