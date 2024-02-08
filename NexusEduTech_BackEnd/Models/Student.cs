@@ -6,38 +6,43 @@ namespace NexusEduTech_BackEnd.Models
     [Table("tbl_Student")]
     public class Student
     {
-        [Required]
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int StudentId { get; set; }
-
-        public int UserId { get; set; }
-        [ForeignKey("UserId")]
-        public CustomUser? userId { get; set; }
-
         [Required]
-        public int ClassRoomId { get; set; }
-
         public int ClassId { get; set; }
         [ForeignKey("ClassId")]
-        public Classess? class_Id { get; set; }
+        public Class? Class { get; set; }
+
+        [Required(ErrorMessage = "Enter Valid Name")]
+        [Column("Name", TypeName = "varchar")]
+        [StringLength(50)] 
+        public string Name { get; set; }
 
         [Required]
         [Column("Registration Number", TypeName = "varchar")]
         [StringLength(50)]
         public string RegistrationNumber { get; set; }
 
+        [Required(ErrorMessage = "Enter Valid Gender")]
+        [Column("Gender", TypeName = "varchar")]
+        [StringLength(10)]
+        public string Gender { get; set; }
+
+        [Required(ErrorMessage = "Enter Valid DOB")]
+        [Column("DOB", TypeName = "Date")]
+        public DateTime DOB { get; set; }
+
+        [Required(ErrorMessage = "Enter Valid Address")]
+        [Column("Address", TypeName = "varchar")]
+        [StringLength(50)]
+        public string Address { get; set; }
+
+        [Required(ErrorMessage = "Enter Email")]
+        [EmailAddress(ErrorMessage = "Invalid EmailId")]
+        public string Email { get; set; }
 
 
-        [Required(ErrorMessage = "Enter Valid Std")]
-        [Column("Std", TypeName = "varchar")]
-        [StringLength(2)]
-        [RegularExpression("[1-12]", ErrorMessage = "Invalid Std")]
-        public string Std { set; get; }
-
-        [Required(ErrorMessage = "Enter Valid Section ")]
-        [Column("Section", TypeName = "varchar")]
-        [StringLength(1)]
-        [RegularExpression("[A-Z]", ErrorMessage = "Invalid Section")]
-        public string Section { set; get; }
 
     }
 }

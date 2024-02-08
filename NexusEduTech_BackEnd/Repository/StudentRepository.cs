@@ -45,13 +45,25 @@ namespace NexusEduTech_BackEnd.Repository
             }
         }
 
-        public List<StudentDTO> GetAll()
+        public List<ByStd> GetAll()
         {
             try
             {
-                var items= _context.Students.ToList();
-                var _student = _mapper.Map<List<StudentDTO>>(items);
-                return _student;
+                var item = (from s in _context.Students
+                            join c in _context.Class
+                            on s.ClassId equals c.ClassId
+                            select new ByStd()
+                            {
+                                StudentId = s.StudentId,
+                                Name = s.Name,
+                                RegistrationNumber = s.RegistrationNumber,
+                                Standard = c.Standard,
+                                Section = c.Section
+                            }).ToList();
+                return item;
+                /* var items= _context.Students.ToList();
+                 var _student = _mapper.Map<List<StudentDTO>>(items);
+                 return _student;*/
             }
             catch (Exception)
             {
@@ -60,13 +72,31 @@ namespace NexusEduTech_BackEnd.Repository
             }
         }
 
-        public StudentDTO GetByRollNo(string rollno)
+        public GetByRollNo GetByStudentId(int id)
         {
             try
             {
-                var item = _context.Students.SingleOrDefault(s => s.RegistrationNumber == rollno);
-                var _student = _mapper.Map<StudentDTO>(item);
-                return _student;
+
+                var item = (from s in _context.Students
+                            join c in _context.Class
+                            on s.ClassId equals c.ClassId
+                            where s.StudentId == id
+                            select new GetByRollNo()
+                            {
+                                StudentId = s.StudentId,
+                                Name = s.Name,
+                                Gender = s.Gender,
+                                DOB = s.DOB,
+                                Email = s.Email,
+                                Address = s.Address,
+                                RegistrationNumber = s.RegistrationNumber,
+                                Standard = c.Standard,
+                                Section = c.Section
+                            }).FirstOrDefault();
+                return item;
+                /* var item = _context.Students.SingleOrDefault(s => s.RegistrationNumber == rollno);
+                 var _student = _mapper.Map<StudentDTO>(item);
+                 return _student;*/
             }
             catch (Exception)
             {
@@ -75,13 +105,24 @@ namespace NexusEduTech_BackEnd.Repository
             }
         }
 
-        public List<StudentDTO> GetByStd(string std)
+        public List<ByStd> GetByStd(string std)
         {
             try
             {
-                var item= _context.Students.Where(s => s.Std == std).ToList();
-                var _student= _mapper.Map<List<StudentDTO>>(item);
-                return _student;
+
+                var item = (from s in _context.Students
+                            join c in _context.Class
+                            on s.ClassId equals c.ClassId
+                            where c.Standard == std 
+                            select new ByStd()
+                            {
+                                StudentId = s.StudentId,
+                                Name = s.Name,
+                                RegistrationNumber = s.RegistrationNumber,
+                                Standard = c.Standard,
+                                Section = c.Section
+                            }).ToList();
+                return item;
             }
             catch (Exception)
             {
@@ -90,13 +131,24 @@ namespace NexusEduTech_BackEnd.Repository
             }
         }
 
-        public List<StudentDTO> GetByStdSec(string std, string sec)
+        public List<ByStd> GetByStdSec(string std, string sec)
         {
             try
             {
-                var item= _context.Students.Where(s => s.Std == std && s.Section == sec).ToList();
-                var _student=_mapper.Map<List<StudentDTO>>(item);
-                return _student;
+                var item= ( from s in _context.Students
+                                                   join c in _context.Class
+                                                   on s.ClassId equals c.ClassId
+                            where c.Standard == std && c.Section == sec
+                                                   select new ByStd()
+                                                   {
+                                                       StudentId=s.StudentId,
+                                                       Name=s.Name,
+                                                       RegistrationNumber=s.RegistrationNumber,
+                                                       Standard=c.Standard,
+                                                       Section=c.Section
+                                                   }).ToList();
+                return item;
+            
             }
             catch (Exception)
             {
@@ -113,6 +165,33 @@ namespace NexusEduTech_BackEnd.Repository
                 _context.Students.Update(_student);
                 _context.SaveChanges();
                 return ("Student Updated");
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        public List<Result> Results()
+        {
+            try
+            {
+                var result = (from s in _context.Students
+                              join m in _context.Marks
+                              on s.StudentId equals m.StudentId
+                              join e in _context.Exams
+                              on m.ExamId equals e.ExamId
+                              join sub in _context.Subject
+                              on e.subjectId equals sub.subjectId
+                              select new Result()
+                              {
+                                  subjectName = sub.subjectName,
+                                  mark = m.mark,
+                                  ExamName = e.ExamName,
+                                  Max_Mark = e.Max_Mark,
+                              }).ToList();
+                return result;
+
             }
             catch (Exception)
             {

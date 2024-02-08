@@ -13,7 +13,7 @@ namespace NexusEduTech_BackEnd.Repository
         public TeacherRepository(MyContext context,IMapper mapper)
         {
             this.context = context;
-            this._mapper = mapper;
+            _mapper = mapper;
         }   
 
         public void AddTeacher(TeacherDTO data)
@@ -62,7 +62,7 @@ namespace NexusEduTech_BackEnd.Repository
             }
         }
 
-        public TeacherDTO GetTeacher(int teacherId)
+        public TeacherDTO GetTeacherById(int teacherId)
         {
             try
             {
@@ -77,11 +77,11 @@ namespace NexusEduTech_BackEnd.Repository
             }
         }
 
-        public List<TeacherDTO> GetTeacherBySubject(string subject)
+        public List<TeacherDTO> GetTeacherByClass(int classid)
         {
             try
             {
-                var item = context.Teachers.Where(x => x.subject == subject).ToList();
+                var item = context.Teachers.Where(x => x.ClassId == classid).ToList();
                 var _teacher = _mapper.Map<List<TeacherDTO>>(item);
                 return _teacher;
             }

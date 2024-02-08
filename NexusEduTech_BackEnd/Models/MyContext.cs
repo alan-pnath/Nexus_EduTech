@@ -11,11 +11,13 @@ namespace NexusEduTech_BackEnd.Models
             _configuration = configuration;
         }
 
-        public  DbSet<CustomUser> Users { get; set; }
-        public DbSet<UserAuthenticate> Login {  get; set; }
+      
+        public DbSet<Class> Class { get; set; }
+        public DbSet<Subject > Subject { get; set; }
+        public DbSet<User> Users {  get; set; }  
         public DbSet<Student> Students { get; set; }
         public DbSet<Examination> Exams { get; set; }   
-        public DbSet<Classess> Classesses { get; set; }
+        public DbSet<ScheduleClass> scheduleClass { get; set; }
         public DbSet<Teacher> Teachers { get; set; }
         public DbSet<Marks> Marks { get; set; }
 

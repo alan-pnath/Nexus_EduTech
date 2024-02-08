@@ -20,6 +20,7 @@ namespace NexusEduTech_BackEnd.Repository
             try
             {
                 var _mark = _mapper.Map<Marks>(data);
+                /*_mark.MarkId = new Random().Next(1000,9999);*/
                 _context.Marks.Add(_mark);
                 _context.SaveChanges();
                 return ("Mark Added");

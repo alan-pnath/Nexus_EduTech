@@ -22,84 +22,26 @@ namespace NexusEduTech_BackEnd.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("NexusEduTech_BackEnd.Models.Classess", b =>
+            modelBuilder.Entity("NexusEduTech_BackEnd.Models.Class", b =>
                 {
                     b.Property<int>("ClassId")
                         .HasColumnType("int");
 
-                    b.Property<string>("ClassName")
+                    b.Property<string>("Section")
                         .IsRequired()
-                        .HasMaxLength(10)
-                        .HasColumnType("nvarchar(10)");
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar")
+                        .HasColumnName("Section");
+
+                    b.Property<string>("Standard")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar")
+                        .HasColumnName("Standard");
 
                     b.HasKey("ClassId");
 
-                    b.ToTable("tbl_classess");
-                });
-
-            modelBuilder.Entity("NexusEduTech_BackEnd.Models.CustomUser", b =>
-                {
-                    b.Property<int>("UserId")
-                        .HasColumnType("int")
-                        .HasColumnName("UserId");
-
-                    b.Property<string>("Address")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("varchar")
-                        .HasColumnName("Address");
-
-                    b.Property<DateTime>("DOB")
-                        .HasColumnType("Date")
-                        .HasColumnName("DOB");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FName")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("varchar")
-                        .HasColumnName("FName");
-
-                    b.Property<string>("Gender")
-                        .IsRequired()
-                        .HasMaxLength(10)
-                        .HasColumnType("varchar")
-                        .HasColumnName("Gender");
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit")
-                        .HasColumnName("IsActive");
-
-                    b.Property<string>("LName")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("varchar")
-                        .HasColumnName("LName");
-
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("varchar")
-                        .HasColumnName("Password");
-
-                    b.Property<string>("Role")
-                        .IsRequired()
-                        .HasMaxLength(10)
-                        .HasColumnType("varchar")
-                        .HasColumnName("Role");
-
-                    b.Property<string>("UserName")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("varchar")
-                        .HasColumnName("UserName");
-
-                    b.HasKey("UserId");
-
-                    b.ToTable("tbl_CustomUser");
+                    b.ToTable("tbl_class");
                 });
 
             modelBuilder.Entity("NexusEduTech_BackEnd.Models.Examination", b =>
@@ -124,18 +66,23 @@ namespace NexusEduTech_BackEnd.Migrations
                         .HasColumnType("int")
                         .HasColumnName("Max_Mark");
 
+                    b.Property<int>("subjectId")
+                        .HasColumnType("int")
+                        .HasColumnName("SubjectId");
+
                     b.HasKey("ExamId");
 
                     b.HasIndex("ClassId");
+
+                    b.HasIndex("subjectId");
 
                     b.ToTable("tbl_Exam");
                 });
 
             modelBuilder.Entity("NexusEduTech_BackEnd.Models.Marks", b =>
                 {
-                    b.Property<Guid>("MarkId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int>("MarkId")
+                        .HasColumnType("int");
 
                     b.Property<int>("ExamId")
                         .HasColumnType("int");
@@ -149,24 +96,82 @@ namespace NexusEduTech_BackEnd.Migrations
 
                     b.HasKey("MarkId");
 
+                    b.HasIndex("ExamId");
+
                     b.HasIndex("StudentId");
 
                     b.ToTable("tbl_Marks");
                 });
 
-            modelBuilder.Entity("NexusEduTech_BackEnd.Models.Student", b =>
+            modelBuilder.Entity("NexusEduTech_BackEnd.Models.ScheduleClass", b =>
                 {
-                    b.Property<int>("StudentId")
+                    b.Property<int>("ScheduleClassId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("StudentId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ScheduleClassId"));
 
                     b.Property<int>("ClassId")
                         .HasColumnType("int");
 
-                    b.Property<int>("ClassRoomId")
+                    b.Property<DateTime>("SessionDate")
+                        .HasColumnType("date")
+                        .HasColumnName("SessionDate");
+
+                    b.Property<string>("SessionTime")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("TeacherId")
                         .HasColumnType("int");
+
+                    b.Property<int>("subjectId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ScheduleClassId");
+
+                    b.HasIndex("ClassId");
+
+                    b.HasIndex("TeacherId");
+
+                    b.HasIndex("subjectId");
+
+                    b.ToTable("scheduleClass");
+                });
+
+            modelBuilder.Entity("NexusEduTech_BackEnd.Models.Student", b =>
+                {
+                    b.Property<int>("StudentId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar")
+                        .HasColumnName("Address");
+
+                    b.Property<int>("ClassId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("DOB")
+                        .HasColumnType("Date")
+                        .HasColumnName("DOB");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Gender")
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("varchar")
+                        .HasColumnName("Gender");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar")
+                        .HasColumnName("Name");
 
                     b.Property<string>("RegistrationNumber")
                         .IsRequired()
@@ -174,28 +179,27 @@ namespace NexusEduTech_BackEnd.Migrations
                         .HasColumnType("varchar")
                         .HasColumnName("Registration Number");
 
-                    b.Property<string>("Section")
-                        .IsRequired()
-                        .HasMaxLength(1)
-                        .HasColumnType("varchar")
-                        .HasColumnName("Section");
-
-                    b.Property<string>("Std")
-                        .IsRequired()
-                        .HasMaxLength(2)
-                        .HasColumnType("varchar")
-                        .HasColumnName("Std");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
                     b.HasKey("StudentId");
 
                     b.HasIndex("ClassId");
 
-                    b.HasIndex("UserId");
-
                     b.ToTable("tbl_Student");
+                });
+
+            modelBuilder.Entity("NexusEduTech_BackEnd.Models.Subject", b =>
+                {
+                    b.Property<int>("subjectId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("subjectName")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("varchar")
+                        .HasColumnName("Subject");
+
+                    b.HasKey("subjectId");
+
+                    b.ToTable("tbl_subjects");
                 });
 
             modelBuilder.Entity("NexusEduTech_BackEnd.Models.Teacher", b =>
@@ -203,115 +207,176 @@ namespace NexusEduTech_BackEnd.Migrations
                     b.Property<int>("TeacherId")
                         .HasColumnType("int");
 
-                    b.Property<int>("ClassId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("RegistrationNumber")
+                    b.Property<string>("Address")
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("varchar")
-                        .HasColumnName("Registration Number");
+                        .HasColumnName("Address");
 
-                    b.Property<int>("UserId")
+                    b.Property<int>("ClassId")
                         .HasColumnType("int");
 
-                    b.Property<string>("subject")
+                    b.Property<string>("ContactNumber")
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("varchar")
+                        .HasColumnName("Contact Number");
+
+                    b.Property<DateTime>("DOB")
+                        .HasColumnType("Date")
+                        .HasColumnName("DOB");
+
+                    b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Gender")
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("varchar")
+                        .HasColumnName("Gender");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar")
+                        .HasColumnName("Name");
 
                     b.HasKey("TeacherId");
 
                     b.HasIndex("ClassId");
 
-                    b.HasIndex("UserId");
-
                     b.ToTable("tbl_Teacher");
                 });
 
-            modelBuilder.Entity("NexusEduTech_BackEnd.Models.UserAuthenticate", b =>
+            modelBuilder.Entity("NexusEduTech_BackEnd.Models.User", b =>
                 {
-                    b.Property<Guid>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int>("UserId")
+                        .HasColumnType("int")
+                        .HasColumnName("UserId");
+
+                    b.Property<string>("ContactNumber")
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("varchar")
+                        .HasColumnName("Contact Number");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Id")
+                        .HasColumnType("int")
+                        .HasColumnName("Id");
 
                     b.Property<string>("Password")
                         .IsRequired()
                         .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("varchar")
+                        .HasColumnName("Password");
 
-                    b.Property<string>("role")
+                    b.Property<string>("Role")
                         .IsRequired()
-                        .HasMaxLength(10)
-                        .HasColumnType("nvarchar(10)");
+                        .HasMaxLength(15)
+                        .HasColumnType("varchar")
+                        .HasColumnName("Role");
 
-                    b.Property<string>("username")
+                    b.Property<string>("UserName")
                         .IsRequired()
                         .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("varchar")
+                        .HasColumnName("UserName");
 
-                    b.HasKey("id");
+                    b.HasKey("UserId");
 
-                    b.ToTable("tbl_UserAuthenticate");
+                    b.ToTable("tbl_User");
                 });
 
             modelBuilder.Entity("NexusEduTech_BackEnd.Models.Examination", b =>
                 {
-                    b.HasOne("NexusEduTech_BackEnd.Models.Classess", "class_Id")
+                    b.HasOne("NexusEduTech_BackEnd.Models.Class", "Class")
                         .WithMany()
                         .HasForeignKey("ClassId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("class_Id");
+                    b.HasOne("NexusEduTech_BackEnd.Models.Subject", "Subject")
+                        .WithMany()
+                        .HasForeignKey("subjectId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Class");
+
+                    b.Navigation("Subject");
                 });
 
             modelBuilder.Entity("NexusEduTech_BackEnd.Models.Marks", b =>
                 {
-                    b.HasOne("NexusEduTech_BackEnd.Models.Student", "studentId")
+                    b.HasOne("NexusEduTech_BackEnd.Models.Examination", "Exam")
+                        .WithMany()
+                        .HasForeignKey("ExamId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("NexusEduTech_BackEnd.Models.Student", "Student")
                         .WithMany()
                         .HasForeignKey("StudentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("studentId");
+                    b.Navigation("Exam");
+
+                    b.Navigation("Student");
+                });
+
+            modelBuilder.Entity("NexusEduTech_BackEnd.Models.ScheduleClass", b =>
+                {
+                    b.HasOne("NexusEduTech_BackEnd.Models.Class", "Class")
+                        .WithMany()
+                        .HasForeignKey("ClassId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("NexusEduTech_BackEnd.Models.Teacher", "Teacher")
+                        .WithMany()
+                        .HasForeignKey("TeacherId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("NexusEduTech_BackEnd.Models.Subject", "Subject")
+                        .WithMany()
+                        .HasForeignKey("subjectId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Class");
+
+                    b.Navigation("Subject");
+
+                    b.Navigation("Teacher");
                 });
 
             modelBuilder.Entity("NexusEduTech_BackEnd.Models.Student", b =>
                 {
-                    b.HasOne("NexusEduTech_BackEnd.Models.Classess", "class_Id")
+                    b.HasOne("NexusEduTech_BackEnd.Models.Class", "Class")
                         .WithMany()
                         .HasForeignKey("ClassId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("NexusEduTech_BackEnd.Models.CustomUser", "userId")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("class_Id");
-
-                    b.Navigation("userId");
+                    b.Navigation("Class");
                 });
 
             modelBuilder.Entity("NexusEduTech_BackEnd.Models.Teacher", b =>
                 {
-                    b.HasOne("NexusEduTech_BackEnd.Models.Classess", "class_Id")
+                    b.HasOne("NexusEduTech_BackEnd.Models.Class", "Class")
                         .WithMany()
                         .HasForeignKey("ClassId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("NexusEduTech_BackEnd.Models.CustomUser", "userId")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("class_Id");
-
-                    b.Navigation("userId");
+                    b.Navigation("Class");
                 });
 #pragma warning restore 612, 618
         }

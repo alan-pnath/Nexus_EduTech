@@ -29,7 +29,7 @@ namespace NexusEduTech_BackEnd.Controllers
                 return BadRequest(ex);
             }
         }
-        [HttpPut, Route("UpdateStudent")]
+        [HttpPut, Route("UpdateMark")]
         public IActionResult UpdateMark(MarksDTO data)
         {
             try

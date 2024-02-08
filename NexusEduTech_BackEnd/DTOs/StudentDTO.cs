@@ -3,12 +3,16 @@
     public class StudentDTO
     {
         public int StudentId { get; set; }
-        public int UserId { get; set; }
-        public int ClassRoomId { get; set; }
-        public int ClassId { get; set; }
+        public string Name { get; set; }
         public string RegistrationNumber { get; set; }
-        public string Std { set; get; }
-        public string Section { set; get; }
+        public int ClassId { get; set; }
+        public string Gender { get; set; }
+        public DateTime DOB { get; set; }
+        public string Address { get; set; }
+        public string Email { get; set; }
+     
+
+
     }
 
 }

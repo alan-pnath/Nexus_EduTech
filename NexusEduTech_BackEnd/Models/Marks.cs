@@ -7,21 +7,25 @@ namespace NexusEduTech_BackEnd.Models
     public class Marks
     {
         [Key]
-        [Required]
-        public Guid MarkId { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int MarkId { get; set; }
+
 
         public int StudentId { get; set; }
-        [Column("StudentID")]
         [ForeignKey("StudentId")]
-        public Student? studentId { get; set; }
+
+        public Student? Student { get; set; }
+
 
         public int ExamId { get; set; }
-        [Column("ExamId")]
         [ForeignKey("ExamId")]
-        public Examination? examId { get; }
+
+        public Examination? Exam { get; set; }
+
 
         [Required]
-        [Column("Mark", TypeName = "int")]
+        [Column("Mark")]
         public int mark { get; set; }
+
     }
 }

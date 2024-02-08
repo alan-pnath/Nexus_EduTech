@@ -9,7 +9,7 @@ namespace NexusEduTech_BackEnd.Repository
         void UpdateTeacher(TeacherDTO data);
         void DeleteTeacher(int teacherId);
         List<TeacherDTO> GetAll();
-        List<TeacherDTO> GetTeacherBySubject(string subject);
-        TeacherDTO GetTeacher(int teacherId);
+        List<TeacherDTO> GetTeacherByClass(int classid);
+        TeacherDTO GetTeacherById(int teacherId);
     }
 }

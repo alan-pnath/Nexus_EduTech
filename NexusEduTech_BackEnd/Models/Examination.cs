@@ -15,14 +15,22 @@ namespace NexusEduTech_BackEnd.Models
         [StringLength(30)]
         public string ExamName { get; set; }
 
+        [Required]
+        [Column("SubjectId", TypeName = "int")]
+        public int subjectId { get; set; }
+        [ForeignKey("subjectId")]
+        public Subject? Subject { get; set; }
+
         [Column("ExamDate", TypeName = "Date")]
         public DateTime ExamDate { get; set; }
 
-        [Column("Max_Mark", TypeName = "int")]
+        [Column("Max_Mark")]
         public int Max_Mark { get; set; }
 
         public int ClassId { get; set; }
         [ForeignKey("ClassId")]
-        public Classess? class_Id { get; set; }
+        public Class? Class { get; set; }
+
+
     }
 }

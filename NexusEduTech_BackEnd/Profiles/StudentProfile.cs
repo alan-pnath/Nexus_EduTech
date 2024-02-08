@@ -9,7 +9,7 @@ namespace NexusEduTech_BackEnd.Profiles
         public StudentProfile()
         {
             CreateMap<StudentDTO, Student>();
-            CreateMap<StudentDTO, Student>();
+            CreateMap<Student, StudentDTO>();
 
         }
     }

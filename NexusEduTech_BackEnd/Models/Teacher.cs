@@ -11,21 +11,39 @@ namespace NexusEduTech_BackEnd.Models
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int TeacherId { get; set; }
 
-        public int UserId { get; set; }
-        [ForeignKey("UserId")]
-        public CustomUser? userId { get; set; }
+        [Required(ErrorMessage = "Enter Valid Name")]
+        [Column("Name", TypeName = "varchar")]
+        [StringLength(50)]
+        public string Name { set; get; }
+
+        [Required(ErrorMessage = "Enter Valid Gender")]
+        [Column("Gender", TypeName = "varchar")]
+        [StringLength(10)]
+        public string Gender { set; get; }
+
+        [Required(ErrorMessage = "Enter Valid DOB")]
+        [Column("DOB", TypeName = "Date")]
+        public DateTime DOB { set; get; }
+
+        [Required(ErrorMessage = "Enter Valid Address")]
+        [Column("Address", TypeName = "varchar")]
+        [StringLength(50)]
+        public string Address { set; get; }
+
+        [Required(ErrorMessage = "Enter Valid Contact Number")]
+        [Column("Contact Number", TypeName = "varchar")]
+        [StringLength(10)]
+        public string ContactNumber { set; get; }
 
 
-        public int ClassId { get; set; }
-        [ForeignKey("ClassId")]
-        public Classess? class_Id { get; set; }
-
-        [Column]
-        public string subject { get; set; }
+        [Required(ErrorMessage = "Enter Email")]
+        [EmailAddress(ErrorMessage = "Invalid EmailId")]
+        public string Email { get; set; }
 
         [Required]
-        [Column("Registration Number", TypeName = "varchar")]
-        [StringLength(50)]
-        public string RegistrationNumber { get; set; }
+        public int ClassId { get; set; }
+        [ForeignKey("ClassId")]
+        public Class? Class { get; set; }
+
     }
 }

@@ -8,11 +8,10 @@ namespace NexusEduTech_BackEnd.Repository
         string Add(StudentDTO data);
         string Update(StudentDTO data);
         string Delete(int id);
-        StudentDTO GetByRollNo(string rollno);
-        List<StudentDTO> GetByStd(string std);
-        List<StudentDTO> GetByStdSec(string std, string sec);
-
-        List<StudentDTO> GetAll();
-
+       GetByRollNo GetByStudentId(int id);
+        List<ByStd> GetByStd(string std);
+        List<ByStd> GetByStdSec(string std, string sec);
+        List<ByStd> GetAll();
+     
     }
 }

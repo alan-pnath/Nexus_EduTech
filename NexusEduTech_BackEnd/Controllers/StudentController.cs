@@ -76,12 +76,12 @@ namespace NexusEduTech_BackEnd.Controllers
             }
         }
 
-        [HttpGet, Route("GetByRollNo/{rno}")]
-        public IActionResult GetByRollNo(string rno)
+        [HttpGet, Route("GetByStudentId/{id}")]
+        public IActionResult GetByStudentId(int id)
         {
             try
             {
-                return Ok(_studentRepository.GetByRollNo(rno));
+                return Ok(_studentRepository.GetByStudentId(id));
             }
             catch (Exception ex)
             {
@@ -115,6 +115,19 @@ namespace NexusEduTech_BackEnd.Controllers
             {
 
                 return BadRequest(ex);
+            }
+        }
+        [HttpGet,Route("ViewResults")]
+        public IActionResult Results()
+        {
+            try
+            {
+                return Ok(_studentRepository.Results());
+            }
+            catch (Exception)
+            {
+
+                throw;
             }
         }
     }

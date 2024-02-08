@@ -30,12 +30,12 @@ namespace NexusEduTech_BackEnd.Controllers
                 throw;
             }
         }
-        [HttpGet, Route("GetAllTeacherBySubject/{Subject}")]
-        public IActionResult GetAllBySubject(string subject)
+        [HttpGet, Route("GetAllTeacherByClass/{classid}")]
+        public IActionResult GetAllByClass(int classid)
         {
             try
             {
-                return Ok(teacherRepository.GetTeacherBySubject(subject));
+                return Ok(teacherRepository.GetTeacherByClass(classid));
             }
             catch (Exception)
             {
@@ -44,11 +44,11 @@ namespace NexusEduTech_BackEnd.Controllers
             }
         }
         [HttpGet, Route("GetTeacher/{id}")]
-        public IActionResult GetStaff(int id)
+        public IActionResult GetTeacherById(int id)
         {
             try
             {
-                return Ok(teacherRepository.GetTeacher(id));
+                return Ok(teacherRepository.GetTeacherById(id));
             }
             catch (Exception)
             {
