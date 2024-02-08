@@ -44,10 +44,10 @@ namespace NexusEduTech_BackEnd.Controllers
             return Ok(_examRepository.GetAll());
         }
 
-        [HttpGet, Route("GetByName/{name}")]
-        public IActionResult GetByName(string name)
+        [HttpGet, Route("GetById/{id}")]
+        public IActionResult GetById(int id)
         {
-            return Ok(_examRepository.GetByName(name));
+            return Ok(_examRepository.GetById(id));
         }
     }
 }

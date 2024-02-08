@@ -199,5 +199,34 @@ namespace NexusEduTech_BackEnd.Repository
                 throw;
             }
         }
+
+        public List<Result> ResultsById(int id)
+        {
+            try
+            {
+                var result = (from s in _context.Students
+                              join m in _context.Marks
+                              on s.StudentId equals m.StudentId
+                              join e in _context.Exams
+                              on m.ExamId equals e.ExamId
+                              join sub in _context.Subject
+                              on e.subjectId equals sub.subjectId
+                              where s.StudentId == id
+                              select new Result()
+                              {
+                                  subjectName = sub.subjectName,
+                                  mark = m.mark,
+                                  ExamName = e.ExamName,
+                                  Max_Mark = e.Max_Mark,
+                              }).ToList();
+                return result;
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

@@ -73,6 +73,43 @@ namespace NexusEduTech_BackEnd.Repository
                 throw;
             }
         }
+        public ScheduleClassDTO GetScheduleClassByStudentId(int id)
+        {
+            var item = _context.scheduleClass.Find(id);
+            var std = _mapper.Map<ScheduleClassDTO>(item);
+            return std;
+        }
+
+        public void EditScheduleClass(int id)
+        {
+            try
+            {
+                var item=_context.scheduleClass.Find(id);
+                var _class = _mapper.Map<ScheduleClass>(item);
+                _context.scheduleClass.Update(_class);
+                _context.SaveChanges();
+               
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        public void DeleteScheduleClass(int id)
+        {
+            try
+            {
+                var item = _context.scheduleClass.Find(id);
+                _context.scheduleClass.Remove(item);
+                _context.SaveChanges();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
     }
 

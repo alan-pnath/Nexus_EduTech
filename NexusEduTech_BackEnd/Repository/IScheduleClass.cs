@@ -7,7 +7,9 @@ namespace NexusEduTech_BackEnd.Repository
     {
       void AssignTeacher(ScheduleClassDTO data);
         List<ScheduleClassDTO> ViewSchedules();
-
+        ScheduleClassDTO GetScheduleClassByStudentId(int id);
+        void EditScheduleClass(int id);
+        void DeleteScheduleClass(int id);
 
 
     }

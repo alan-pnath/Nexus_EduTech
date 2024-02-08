@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using NexusEduTech_BackEnd.Controllers;
 using NexusEduTech_BackEnd.Models;
 namespace NexusEduTech_BackEnd.Models
 {
@@ -20,6 +21,7 @@ namespace NexusEduTech_BackEnd.Models
         public DbSet<ScheduleClass> scheduleClass { get; set; }
         public DbSet<Teacher> Teachers { get; set; }
         public DbSet<Marks> Marks { get; set; }
+  /*      public DbSet<AnnouncementController> { get; set; }*/
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

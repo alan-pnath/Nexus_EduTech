@@ -39,5 +39,46 @@ namespace NexusEduTech_BackEnd.Controllers
                 throw;
             }
         }
+        [HttpGet,Route("GetScheduleClassByStudentId/{id}")]
+        public IActionResult GetScheduleClassByStudentId(int id)
+        {
+            try
+            {
+                return Ok(_scheduleClassRepository.GetScheduleClassByStudentId(id));
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        [HttpPut,Route("EditScheduleClass/{id}")]
+        public IActionResult EditScheduleClass(int id)
+        {
+            try
+            {
+                _scheduleClassRepository.EditScheduleClass(id);
+                return Ok("updated");
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        [HttpDelete,Route("DeleteScheduleClass/{id}")]
+        public IActionResult DeleteScheduleClass(int id)
+        {
+            try
+            {
+                _scheduleClassRepository.DeleteScheduleClass(id);
+                return Ok();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

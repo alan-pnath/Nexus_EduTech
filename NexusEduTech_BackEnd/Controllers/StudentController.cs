@@ -130,5 +130,19 @@ namespace NexusEduTech_BackEnd.Controllers
                 throw;
             }
         }
+
+        [HttpGet,Route("ViewResultById/{id}")]
+        public IActionResult ResultById(int id) 
+        {
+            try
+            {
+                return Ok(_studentRepository.ResultsById(id));
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

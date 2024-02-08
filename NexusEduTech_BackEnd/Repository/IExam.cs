@@ -8,7 +8,7 @@ namespace NexusEduTech_BackEnd.Repository
         string AddExam(ExamDTO data);
         string UpdateExam(ExamDTO data);
         string DeleteExam(int id);
-        List<ExamDTO> GetByName(string name);
+        List<ExamDTO> GetById(int id);
         List<ExamDTO> GetAll();
     }
 }

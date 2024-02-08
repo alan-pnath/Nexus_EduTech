@@ -65,11 +65,11 @@ namespace NexusEduTech_BackEnd.Repository
             }
         }
 
-        public List<ExamDTO> GetByName(string name)
+        public List<ExamDTO> GetById(int id)
         {
             try
             {
-               var item= _context.Exams.Where(e => e.ExamName == name).ToList();
+               var item= _context.Exams.Where(e => e.ExamId == id).ToList();
                 var _exam = _mapper.Map<List<ExamDTO>>(item);
                 return _exam;
             }
@@ -95,5 +95,37 @@ namespace NexusEduTech_BackEnd.Repository
                 throw;
             }
         }
+       /* public List <WithSubjectNameAndStd> GetExamWithSubjectNameAndStd(string subName,string std)
+        {
+            try
+            {
+               *//* var result = (from e in _context.Exams
+                              join s in _context.Subject
+                              on e.subjectId equals s.subjectId
+                              join c in _context.Class
+                              on e.ClassId equals c.ClassId
+                              join m in _context.Marks
+                              on e.ExamId equals m.ExamId
+                              where s.subjectName == subName && c.Standard == std
+                              select new WithSubjectNameAndStd
+                              {
+                                  ExamName = e.ExamName,
+                                  Max_Mark = e.Max_Mark,
+                                  subjectName = s.subjectName,
+                                  mark = m.mark
+                              }
+                            ).ToList();*//*
+
+                var subId = (from s in _context.Subject where s.subjectName ==  subName select s.subjectId).FirstOrDefault();
+                var result 
+                return result;
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }*/
     }
 }
