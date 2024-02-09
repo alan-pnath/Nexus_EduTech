@@ -21,6 +21,7 @@ namespace NexusEduTech_BackEnd
             builder.Services.AddTransient<UserRepository>();
             builder.Services.AddTransient<StudentAttendenceRepository>();
             builder.Services.AddTransient<TeacherAttendenceRepository>();
+            builder.Services.AddTransient<PasswordRecoveryRepository>();
             builder.Services.AddControllers();
             builder.Services.AddCors(options =>
             {

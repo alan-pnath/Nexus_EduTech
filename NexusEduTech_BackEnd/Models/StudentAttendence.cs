@@ -14,7 +14,13 @@ namespace NexusEduTech_BackEnd.Models
         public int StudentId { get; set; }
         [ForeignKey("StudentId")]
         public Student? Student { get; set; }
-       
+
+     /*   [Required]
+        [Column("ClassID")]
+        public int ClassId { get; set; }
+        [ForeignKey("ClassId")]
+        public Class? Class { get; set; }*/
+
         [Required]
         [Column("StudentAttendenceDate",TypeName ="date")]
         public DateTime AttendanceDate { get; set; }

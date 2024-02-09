@@ -10,7 +10,7 @@ namespace NexusEduTech_BackEnd.Repository
         {
             _context = context;
         }
-        public void AddUser(User user)
+        public void AddUser(User user) //SignUp
         {
             try
             {

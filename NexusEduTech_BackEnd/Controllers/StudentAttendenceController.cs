@@ -70,5 +70,19 @@ namespace NexusEduTech_BackEnd.Controllers
                 throw;
             }
         }
+        [HttpGet,Route("GetAttendenceByClassStdSec/{std}/{sec}")]
+        public IActionResult GetAttendenceByClassStdSec(string std, string sec)
+        {
+            try
+            {
+                return Ok(_studentAttendenceRepository.GetAttendenceByClassStdSec(std, sec).ToList());
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

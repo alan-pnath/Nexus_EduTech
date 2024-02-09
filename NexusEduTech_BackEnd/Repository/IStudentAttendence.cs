@@ -9,6 +9,7 @@ namespace NexusEduTech_BackEnd.Repository
         AttendenceResult GetStudAttendenceById(int studid);
         List<StudentAttendenceDTO> GetStudentAttendencebyMonth(int month);
         void Update(StudentAttendenceDTO data);
+        List<AttendenceLayout> GetAttendenceByClassStdSec(string std, string sec);
 
     }
 }

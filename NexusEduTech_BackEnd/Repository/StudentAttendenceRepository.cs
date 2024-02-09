@@ -2,6 +2,8 @@
 using AutoMapper;
 using NexusEduTech_BackEnd.DTOs;
 using System.Security.Cryptography;
+using Microsoft.EntityFrameworkCore;
+using System.Drawing;
 namespace NexusEduTech_BackEnd.Repository
 {
     public class StudentAttendenceRepository : IStudentAttendence
@@ -89,6 +91,30 @@ namespace NexusEduTech_BackEnd.Repository
                 var _item = _mapper.Map<StudentAttendence>(data);
                 _context.StudentAttendences.Update(_item );
                 _context.SaveChanges();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        public List<AttendenceLayout> GetAttendenceByClassStdSec(string std, string sec)
+        {
+            try
+            {
+                var result = (from s in _context.Students
+                              join i in _context.Class
+                              on s.ClassId equals i.ClassId
+                              join a in _context.StudentAttendences
+                              on s.StudentId equals a.StudentId
+                              where i.Standard == std && i.Section== sec
+                              select new AttendenceLayout()
+                              {
+                                  name = s.Name,
+                                  RollNo = s.RegistrationNumber,
+                                  Status = a.Status
+                              }).ToList();
+                return result;
             }
             catch (Exception)
             {

@@ -1,6 +1,7 @@
 ﻿using NexusEduTech_BackEnd.DTOs;
 using NexusEduTech_BackEnd.Models;
 using AutoMapper;
+using ActiveUp.Net.Groupware.vCard;
 namespace NexusEduTech_BackEnd.Repository
 {
     public class StudentRepository : IStudent

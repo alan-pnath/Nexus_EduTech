@@ -15,15 +15,16 @@ namespace NexusEduTech_BackEnd.Controllers
     public class UserController : ControllerBase
     {
         private readonly UserRepository _userRepository;
-        private readonly IConfiguration _configuration;
+        private readonly IConfiguration configuration;
 
         public UserController(UserRepository userRepository, IConfiguration configuration)
         {
             _userRepository = userRepository;
-            _configuration = configuration;
+            this.configuration = configuration;
         }
 
-        [HttpPost,Route("AddUser")]
+        [HttpPost, Route("AddUser")]
+        [AllowAnonymous]
         public IActionResult Adduser(User user)
         {
             try
@@ -64,9 +65,9 @@ namespace NexusEduTech_BackEnd.Controllers
 
         private string GetToken(User? user)
         {
-            var issuer = _configuration["Jwt:Issuer"];
-            var audience = _configuration["Jwt:Audience"];
-            var key = Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]);
+            var issuer = configuration["Jwt:Issuer"];
+            var audience = configuration["Jwt:Audience"];
+            var key = Encoding.UTF8.GetBytes(configuration["Jwt:Key"]);
             //header part
             var signingCredentials = new SigningCredentials(
                 new SymmetricSecurityKey(key),
@@ -75,10 +76,10 @@ namespace NexusEduTech_BackEnd.Controllers
             //payload part
             var subject = new ClaimsIdentity(new[]
             {
-                        new Claim(ClaimTypes.Name,user.UserName),
-                        new Claim(ClaimTypes.Role, user.Role),
-                        new Claim(ClaimTypes.Email,user.Email),
-                    });
+                    new Claim(ClaimTypes.Name,user.UserName),
+                    new Claim(ClaimTypes.Role, user.Role),
+                    new Claim(ClaimTypes.Email,user.Email),
+                });
 
             var expires = DateTime.UtcNow.AddMinutes(10);
             //signature part
@@ -97,7 +98,7 @@ namespace NexusEduTech_BackEnd.Controllers
             return jwtToken;
         }
 
-        [HttpDelete,Route("DeleteUser")]
+        [HttpDelete, Route("DeleteUser")]
         public IActionResult Deleteuser(User user)
         {
             try
@@ -111,7 +112,7 @@ namespace NexusEduTech_BackEnd.Controllers
                 throw;
             }
         }
-        [HttpGet,Route("GetAllUser")]
+        [HttpGet, Route("GetAllUser")]
         public IActionResult GetAll()
         {
             try
@@ -124,12 +125,12 @@ namespace NexusEduTech_BackEnd.Controllers
                 throw;
             }
         }
-        [HttpPut,Route("UpdateUser")]
+        [HttpPut, Route("UpdateUser")]
         public IActionResult Update(User user)
         {
             try
             {
-               _userRepository.Update(user);
+                _userRepository.Update(user);
                 return Ok("updated");
             }
             catch (Exception)
@@ -140,3 +141,4 @@ namespace NexusEduTech_BackEnd.Controllers
         }
     }
 }
+

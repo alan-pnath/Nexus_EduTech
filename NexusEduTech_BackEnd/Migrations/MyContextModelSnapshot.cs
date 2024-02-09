@@ -198,6 +198,10 @@ namespace NexusEduTech_BackEnd.Migrations
                         .HasColumnType("date")
                         .HasColumnName("StudentAttendenceDate");
 
+                    b.Property<int>("ClassId")
+                        .HasColumnType("int")
+                        .HasColumnName("ClassID");
+
                     b.Property<string>("Status")
                         .IsRequired()
                         .HasMaxLength(10)
@@ -209,6 +213,8 @@ namespace NexusEduTech_BackEnd.Migrations
                         .HasColumnName("StudentID");
 
                     b.HasKey("StudAttendenceId");
+
+                    b.HasIndex("ClassId");
 
                     b.HasIndex("StudentId");
 
@@ -428,11 +434,19 @@ namespace NexusEduTech_BackEnd.Migrations
 
             modelBuilder.Entity("NexusEduTech_BackEnd.Models.StudentAttendence", b =>
                 {
+                    b.HasOne("NexusEduTech_BackEnd.Models.Class", "Class")
+                        .WithMany()
+                        .HasForeignKey("ClassId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("NexusEduTech_BackEnd.Models.Student", "Student")
                         .WithMany()
                         .HasForeignKey("StudentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Class");
 
                     b.Navigation("Student");
                 });
