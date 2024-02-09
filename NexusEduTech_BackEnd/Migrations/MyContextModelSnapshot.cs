@@ -186,6 +186,35 @@ namespace NexusEduTech_BackEnd.Migrations
                     b.ToTable("tbl_Student");
                 });
 
+            modelBuilder.Entity("NexusEduTech_BackEnd.Models.StudentAttendence", b =>
+                {
+                    b.Property<int>("StudAttendenceId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("StudAttendenceId"));
+
+                    b.Property<DateTime>("AttendanceDate")
+                        .HasColumnType("date")
+                        .HasColumnName("StudentAttendenceDate");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("varchar")
+                        .HasColumnName("StudentStatus");
+
+                    b.Property<int>("StudentId")
+                        .HasColumnType("int")
+                        .HasColumnName("StudentID");
+
+                    b.HasKey("StudAttendenceId");
+
+                    b.HasIndex("StudentId");
+
+                    b.ToTable("StudentAttendences");
+                });
+
             modelBuilder.Entity("NexusEduTech_BackEnd.Models.Subject", b =>
                 {
                     b.Property<int>("subjectId")
@@ -247,6 +276,35 @@ namespace NexusEduTech_BackEnd.Migrations
                     b.HasIndex("ClassId");
 
                     b.ToTable("tbl_Teacher");
+                });
+
+            modelBuilder.Entity("NexusEduTech_BackEnd.Models.TeacherAttendence", b =>
+                {
+                    b.Property<int>("TeacherAttendId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TeacherAttendId"));
+
+                    b.Property<DateTime>("AttendanceDate")
+                        .HasColumnType("date")
+                        .HasColumnName("TeacherAttendenceDate");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("varchar")
+                        .HasColumnName("TeacherStatus");
+
+                    b.Property<int>("TeacherId")
+                        .HasColumnType("int")
+                        .HasColumnName("TeacherId");
+
+                    b.HasKey("TeacherAttendId");
+
+                    b.HasIndex("TeacherId");
+
+                    b.ToTable("TeacherAttendences");
                 });
 
             modelBuilder.Entity("NexusEduTech_BackEnd.Models.User", b =>
@@ -368,6 +426,17 @@ namespace NexusEduTech_BackEnd.Migrations
                     b.Navigation("Class");
                 });
 
+            modelBuilder.Entity("NexusEduTech_BackEnd.Models.StudentAttendence", b =>
+                {
+                    b.HasOne("NexusEduTech_BackEnd.Models.Student", "Student")
+                        .WithMany()
+                        .HasForeignKey("StudentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Student");
+                });
+
             modelBuilder.Entity("NexusEduTech_BackEnd.Models.Teacher", b =>
                 {
                     b.HasOne("NexusEduTech_BackEnd.Models.Class", "Class")
@@ -377,6 +446,17 @@ namespace NexusEduTech_BackEnd.Migrations
                         .IsRequired();
 
                     b.Navigation("Class");
+                });
+
+            modelBuilder.Entity("NexusEduTech_BackEnd.Models.TeacherAttendence", b =>
+                {
+                    b.HasOne("NexusEduTech_BackEnd.Models.Teacher", "Teacher")
+                        .WithMany()
+                        .HasForeignKey("TeacherId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Teacher");
                 });
 #pragma warning restore 612, 618
         }

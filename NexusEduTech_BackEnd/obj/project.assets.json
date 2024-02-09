@@ -76,6 +76,33 @@
           }
         }
       },
+      "MailSystem.NET/2.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/ActiveUp.Net.Common.dll": {},
+          "lib/ActiveUp.Net.Dns.dll": {},
+          "lib/ActiveUp.Net.Groupware.dll": {},
+          "lib/ActiveUp.Net.Imap4.dll": {},
+          "lib/ActiveUp.Net.Mail.dll": {},
+          "lib/ActiveUp.Net.Nntp.dll": {},
+          "lib/ActiveUp.Net.OpenPGP.dll": {},
+          "lib/ActiveUp.Net.Pop3.dll": {},
+          "lib/ActiveUp.Net.Smtp.dll": {},
+          "lib/ActiveUp.Net.WhoIs.dll": {}
+        },
+        "runtime": {
+          "lib/ActiveUp.Net.Common.dll": {},
+          "lib/ActiveUp.Net.Dns.dll": {},
+          "lib/ActiveUp.Net.Groupware.dll": {},
+          "lib/ActiveUp.Net.Imap4.dll": {},
+          "lib/ActiveUp.Net.Mail.dll": {},
+          "lib/ActiveUp.Net.Nntp.dll": {},
+          "lib/ActiveUp.Net.OpenPGP.dll": {},
+          "lib/ActiveUp.Net.Pop3.dll": {},
+          "lib/ActiveUp.Net.Smtp.dll": {},
+          "lib/ActiveUp.Net.WhoIs.dll": {}
+        }
+      },
       "Microsoft.AspNetCore.Authentication.JwtBearer/8.0.1": {
         "type": "package",
         "dependencies": {
@@ -1626,6 +1653,30 @@
         "lib/netstandard2.0/Humanizer.dll",
         "lib/netstandard2.0/Humanizer.xml",
         "logo.png"
+      ]
+    },
+    "MailSystem.NET/2.0.1": {
+      "sha512": "ZIbL0InnWbhze/NJ1AA0rR6lMXPu+Oy1xbIbbnHTtb18vBTFNOGhMNf9BzTLLmvu061Bsdt4mQgtxt67YA4qpw==",
+      "type": "package",
+      "path": "mailsystem.net/2.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "documentation/COPYRIGHT.txt",
+        "documentation/Documentation.chm",
+        "documentation/LICENSE.txt",
+        "lib/ActiveUp.Net.Common.dll",
+        "lib/ActiveUp.Net.Dns.dll",
+        "lib/ActiveUp.Net.Groupware.dll",
+        "lib/ActiveUp.Net.Imap4.dll",
+        "lib/ActiveUp.Net.Mail.dll",
+        "lib/ActiveUp.Net.Nntp.dll",
+        "lib/ActiveUp.Net.OpenPGP.dll",
+        "lib/ActiveUp.Net.Pop3.dll",
+        "lib/ActiveUp.Net.Smtp.dll",
+        "lib/ActiveUp.Net.WhoIs.dll",
+        "mailsystem.net.2.0.1.nupkg.sha512",
+        "mailsystem.net.nuspec"
       ]
     },
     "Microsoft.AspNetCore.Authentication.JwtBearer/8.0.1": {
@@ -4271,6 +4322,7 @@
   "projectFileDependencyGroups": {
     "net8.0": [
       "AutoMapper >= 13.0.0",
+      "MailSystem.NET >= 2.0.1",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 8.0.1",
       "Microsoft.EntityFrameworkCore.SqlServer >= 8.0.1",
       "Microsoft.EntityFrameworkCore.Tools >= 8.0.1",
@@ -4320,6 +4372,10 @@
             "target": "Package",
             "version": "[13.0.0, )"
           },
+          "MailSystem.NET": {
+            "target": "Package",
+            "version": "[2.0.1, )"
+          },
           "Microsoft.AspNetCore.Authentication.JwtBearer": {
             "target": "Package",
             "version": "[8.0.1, )"
@@ -4361,5 +4417,17 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'MailSystem.NET 2.0.1' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net8.0'. This package may not be fully compatible with your project.",
+      "libraryId": "MailSystem.NET",
+      "targetGraphs": [
+        "net8.0"
+      ]
+    }
+  ]
 }

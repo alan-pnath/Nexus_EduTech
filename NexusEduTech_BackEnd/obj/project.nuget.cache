@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "Ve3hHecBMItfIAse21PyZZMUSaqhLtqno8cnjxfw8a0LjNUi0kB+X/R40TspWOL/bQAqURXbrPy1xf1SYpx3tw==",
+  "dgSpecHash": "3a4yvHhl28LKDP0qvrVhA6jbqzHEinSKefcrrhMNqV7prtQgWEcYPyu/QNZbXaIfAANI7ijKczwZlcm7MwzuJg==",
   "success": true,
   "projectFilePath": "C:\\Users\\aprasena\\Training\\Nexus_EduTech\\NexusEduTech_BackEnd\\NexusEduTech_BackEnd.csproj",
   "expectedPackageFiles": [
@@ -8,6 +8,7 @@
     "C:\\Users\\aprasena\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\aprasena\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",
     "C:\\Users\\aprasena\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
+    "C:\\Users\\aprasena\\.nuget\\packages\\mailsystem.net\\2.0.1\\mailsystem.net.2.0.1.nupkg.sha512",
     "C:\\Users\\aprasena\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\8.0.1\\microsoft.aspnetcore.authentication.jwtbearer.8.0.1.nupkg.sha512",
     "C:\\Users\\aprasena\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\6.0.0\\microsoft.bcl.asyncinterfaces.6.0.0.nupkg.sha512",
     "C:\\Users\\aprasena\\.nuget\\packages\\microsoft.codeanalysis.analyzers\\3.3.3\\microsoft.codeanalysis.analyzers.3.3.3.nupkg.sha512",
@@ -84,5 +85,16 @@
     "C:\\Users\\aprasena\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512",
     "C:\\Users\\aprasena\\.nuget\\packages\\system.windows.extensions\\6.0.0\\system.windows.extensions.6.0.0.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'MailSystem.NET 2.0.1' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net8.0'. This package may not be fully compatible with your project.",
+      "libraryId": "MailSystem.NET",
+      "targetGraphs": [
+        "net8.0"
+      ]
+    }
+  ]
 }

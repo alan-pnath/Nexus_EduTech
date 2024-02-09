@@ -21,7 +21,9 @@ namespace NexusEduTech_BackEnd.Models
         public DbSet<ScheduleClass> scheduleClass { get; set; }
         public DbSet<Teacher> Teachers { get; set; }
         public DbSet<Marks> Marks { get; set; }
-  /*      public DbSet<AnnouncementController> { get; set; }*/
+        public DbSet<StudentAttendence>StudentAttendences { get; set; }
+        public DbSet<TeacherAttendence> TeacherAttendences { get; set; }
+        /*        public DbSet<AnnouncementController> { get; set; }*/
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

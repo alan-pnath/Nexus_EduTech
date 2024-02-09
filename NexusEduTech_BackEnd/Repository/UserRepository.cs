@@ -57,6 +57,11 @@ namespace NexusEduTech_BackEnd.Repository
             _context.Users.Update(user);
             _context.SaveChanges();
         }
+
+        public User validate(LoginUser loginUser)
+        {
+            return _context.Users.SingleOrDefault(u => u.UserName == loginUser.Username && u.Password == loginUser.Password);
+        }
         /*public void UpdatePassword (string username, string old_password, string new_password)
         {
             var s = _context.Users.Find(username);

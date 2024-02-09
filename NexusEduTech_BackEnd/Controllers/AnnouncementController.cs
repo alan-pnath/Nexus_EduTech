@@ -3,6 +3,10 @@ using Microsoft.AspNetCore.Mvc;
 using NexusEduTech_BackEnd.DTOs;
 using NexusEduTech_BackEnd.Models;
 using NexusEduTech_BackEnd.Repository;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace NexusEduTech_BackEnd.Controllers
 {
@@ -10,39 +14,68 @@ namespace NexusEduTech_BackEnd.Controllers
     [ApiController]
     public class AnnouncementController : ControllerBase
     {
+        private readonly IEmailService _emailService;
+        private readonly MyContext _dbContext;
 
-            private readonly IEmailService _emailService;
-            private readonly MyContext _dbContext; // Inject your DbContext here
+        public AnnouncementController(IEmailService emailService, MyContext dbContext)
+        {
+            _emailService = emailService;
+            _dbContext = dbContext;
+        }
 
-            public AnnouncementController(IEmailService emailService, MyContext dbContext)
-            {
-                _emailService = emailService;
-                _dbContext = dbContext;
-            }
-
-            [HttpPost]
-            [Route("api/announcements/send")]
-            public async Task<IActionResult> SendAnnouncement([FromBody] AnnouncementDTO announcementDto)
+        [HttpPost("send")]
+        public async Task<IActionResult> SendAnnouncement([FromBody] AnnouncementDTO announcementDto)
+        {
+            try
             {
                 // Validation, authentication, etc.
 
-                // Get email addresses of all teachers
-                var teacherEmails = _dbContext.Teachers.Select(t => t.Email).ToList();
+                List<string> recipients = new List<string>();
 
-                // Get email addresses of all students
-                var studentEmails = _dbContext.Students.Select(s => s.Email).ToList();
+                switch (announcementDto.RecipientType)
+                {
+                    case RecipientType.All:
+                        recipients = GetAllEmails();
+                        break;
+                    case RecipientType.Teachers:
+                        recipients = GetTeacherEmails();
+                        break;
+                    case RecipientType.Student:
+                        if (announcementDto.StudentEmail != null)
+                        {
+                            recipients.Add(announcementDto.StudentEmail);
+                        }
+                        break;
+                    default:
+                        return BadRequest("Invalid recipient type");
+                }
 
-                // Combine all email addresses
-                var allEmails = new List<string>();
-                allEmails.AddRange(teacherEmails);
-                allEmails.AddRange(studentEmails);
-
-                // Send announcement email to all recipients
-                await _emailService.SendAnnouncementEmail(announcementDto, allEmails);
-
-                return Ok();
+                if (recipients.Any())
+                {
+                    await _emailService.SendAnnouncementEmail(announcementDto, recipients);
+                    return Ok("Announcement sent successfully");
+                }
+                else
+                {
+                    return BadRequest("No recipients found");
+                }
             }
-        
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Error: {ex.Message}");
+            }
+        }
+
+        private List<string> GetAllEmails()
+        {
+            var teacherEmails = _dbContext.Teachers.Select(t => t.Email).ToList();
+            var studentEmails = _dbContext.Students.Select(s => s.Email).ToList();
+            return teacherEmails.Concat(studentEmails).ToList();
+        }
+
+        private List<string> GetTeacherEmails()
+        {
+            return _dbContext.Teachers.Select(t => t.Email).ToList();
+        }
     }
 }
-

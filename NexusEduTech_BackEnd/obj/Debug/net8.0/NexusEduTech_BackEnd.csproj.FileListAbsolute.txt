@@ -137,3 +137,13 @@ C:\Users\aprasena\Training\Nexus_EduTech\NexusEduTech_BackEnd\obj\Debug\net8.0\N
 C:\Users\aprasena\Training\Nexus_EduTech\NexusEduTech_BackEnd\obj\Debug\net8.0\NexusEduTech_BackEnd.genruntimeconfig.cache
 C:\Users\aprasena\Training\Nexus_EduTech\NexusEduTech_BackEnd\obj\Debug\net8.0\ref\NexusEduTech_BackEnd.dll
 C:\Users\aprasena\Training\Nexus_EduTech\NexusEduTech_BackEnd\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\aprasena\Training\Nexus_EduTech\NexusEduTech_BackEnd\bin\Debug\net8.0\ActiveUp.Net.Common.dll
+C:\Users\aprasena\Training\Nexus_EduTech\NexusEduTech_BackEnd\bin\Debug\net8.0\ActiveUp.Net.Dns.dll
+C:\Users\aprasena\Training\Nexus_EduTech\NexusEduTech_BackEnd\bin\Debug\net8.0\ActiveUp.Net.Groupware.dll
+C:\Users\aprasena\Training\Nexus_EduTech\NexusEduTech_BackEnd\bin\Debug\net8.0\ActiveUp.Net.Imap4.dll
+C:\Users\aprasena\Training\Nexus_EduTech\NexusEduTech_BackEnd\bin\Debug\net8.0\ActiveUp.Net.Mail.dll
+C:\Users\aprasena\Training\Nexus_EduTech\NexusEduTech_BackEnd\bin\Debug\net8.0\ActiveUp.Net.Nntp.dll
+C:\Users\aprasena\Training\Nexus_EduTech\NexusEduTech_BackEnd\bin\Debug\net8.0\ActiveUp.Net.OpenPGP.dll
+C:\Users\aprasena\Training\Nexus_EduTech\NexusEduTech_BackEnd\bin\Debug\net8.0\ActiveUp.Net.Pop3.dll
+C:\Users\aprasena\Training\Nexus_EduTech\NexusEduTech_BackEnd\bin\Debug\net8.0\ActiveUp.Net.Smtp.dll
+C:\Users\aprasena\Training\Nexus_EduTech\NexusEduTech_BackEnd\bin\Debug\net8.0\ActiveUp.Net.WhoIs.dll
