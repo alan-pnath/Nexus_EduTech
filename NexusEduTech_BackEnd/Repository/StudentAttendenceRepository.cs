@@ -102,7 +102,7 @@ namespace NexusEduTech_BackEnd.Repository
         {
             try
             {
-                var result = (from s in _context.Students
+                List<AttendenceLayout> result = (from s in _context.Students
                               join i in _context.Class
                               on s.ClassId equals i.ClassId
                               join a in _context.StudentAttendences
@@ -111,9 +111,11 @@ namespace NexusEduTech_BackEnd.Repository
                               select new AttendenceLayout()
                               {
                                   name = s.Name,
-                                  RollNo = s.RegistrationNumber,
+                                 RollNo = s.RegistrationNumber,
                                   Status = a.Status
-                              }).ToList();
+                              }
+                               ).ToList();
+                //Console.WriteLine(result.ToString());
                 return result;
             }
             catch (Exception)

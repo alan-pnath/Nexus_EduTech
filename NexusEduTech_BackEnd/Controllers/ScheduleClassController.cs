@@ -26,12 +26,12 @@ namespace NexusEduTech_BackEnd.Controllers
         {
             return Ok(_scheduleClassRepository.ViewSchedules());
         }
-        [HttpGet,Route("GetWithTeacherNameSubjectName/{teacherName}/{subName}")]
-        public IActionResult GetWithTeacherNameSubjectName(string teacherName,string subName)
+        [HttpGet,Route("GetWithTeacherNameSubjectName/{teacherName}")]
+        public IActionResult GetWithTeacherNameSubjectName(string teacherName)
         {
             try
             {
-                return Ok(_scheduleClassRepository.GetWithTeacherNameSubjectName(teacherName, subName));
+                return Ok(_scheduleClassRepository.GetWithTeacherNameSubjectName(teacherName));
             }
             catch (Exception)
             {

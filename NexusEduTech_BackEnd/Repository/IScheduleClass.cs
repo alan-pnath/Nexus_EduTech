@@ -10,6 +10,7 @@ namespace NexusEduTech_BackEnd.Repository
         ScheduleClassDTO GetScheduleClassByStudentId(int id);
         void EditScheduleClass(int id);
         void DeleteScheduleClass(int id);
+        List<ScheduleClassWithTeacherNameSubjectName> GetWithTeacherNameSubjectName(string teacherName);
 
 
     }

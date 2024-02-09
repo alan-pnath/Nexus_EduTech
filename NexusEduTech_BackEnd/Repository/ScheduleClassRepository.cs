@@ -46,7 +46,8 @@ namespace NexusEduTech_BackEnd.Repository
                 throw;
             }
         }
-        public List<ScheduleClassWithTeacherNameSubjectName> GetWithTeacherNameSubjectName(string teacherName,string subName)
+
+        public List<ScheduleClassWithTeacherNameSubjectName> GetWithTeacherNameSubjectName(string teacherName)
         {
             try
             {
@@ -55,13 +56,13 @@ namespace NexusEduTech_BackEnd.Repository
                             on s.subjectId equals sub.subjectId
                             join t in _context.Teachers
                             on s.TeacherId equals t.TeacherId
-                            where t.Name == teacherName && sub.subjectName == subName
+                            where t.Name == teacherName 
                             select new ScheduleClassWithTeacherNameSubjectName
                             {
                                 ClassId = s.ClassId,
                                 SessionTime = s.SessionTime,
                                 SessionDate = s.SessionDate,
-                                subjectName = sub.subjectName,
+                            
                                 Name = t.Name
                             }).ToList();
                 return item;
@@ -73,6 +74,33 @@ namespace NexusEduTech_BackEnd.Repository
                 throw;
             }
         }
+        /* public List<ScheduleClassWithTeacherNameSubjectName> GetWithTeacherNameSubjectName(string teacherName,string subName)
+         {
+             try
+             {
+                 var item = (from s in _context.scheduleClass
+                             join sub in _context.Subject
+                             on s.subjectId equals sub.subjectId
+                             join t in _context.Teachers
+                             on s.TeacherId equals t.TeacherId
+                             where t.Name == teacherName && sub.subjectName == subName
+                             select new ScheduleClassWithTeacherNameSubjectName
+                             {
+                                 ClassId = s.ClassId,
+                                 SessionTime = s.SessionTime,
+                                 SessionDate = s.SessionDate,
+                                 subjectName = sub.subjectName,
+                                 Name = t.Name
+                             }).ToList();
+                 return item;
+
+             }
+             catch (Exception)
+             {
+
+                 throw;
+             }
+         }*/
         public ScheduleClassDTO GetScheduleClassByStudentId(int id)
         {
             var item = _context.scheduleClass.Find(id);

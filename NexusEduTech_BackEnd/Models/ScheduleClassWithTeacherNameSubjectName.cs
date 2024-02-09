@@ -5,7 +5,6 @@
         public int ClassId { get; set; }
         public string SessionTime { get; set; }
         public DateTime SessionDate { get; set; }
-        public string subjectName { get; set; }
         public string Name { set; get; }
     }
 }
