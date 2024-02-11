@@ -144,5 +144,19 @@ namespace NexusEduTech_BackEnd.Controllers
                 throw;
             }
         }
+
+        [HttpGet,Route("GetStudentByClassId/{classid}")]
+        public IActionResult ResultByClassId(int classid)
+        {
+            try
+            {
+                return Ok(_studentRepository.GetStudentsByClassId(classid));
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

@@ -76,6 +76,7 @@ namespace NexusEduTech_BackEnd.Controllers
             //payload part
             var subject = new ClaimsIdentity(new[]
             {
+                    /*new Claim(ClaimTypes.id,user.Id),*/
                     new Claim(ClaimTypes.Name,user.UserName),
                     new Claim(ClaimTypes.Role, user.Role),
                     new Claim(ClaimTypes.Email,user.Email),

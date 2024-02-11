@@ -229,5 +229,30 @@ namespace NexusEduTech_BackEnd.Repository
                 throw;
             }
         }
+
+        public List<StudentDTO> GetStudentsByClassId(int classId)
+        {
+            try
+            {
+                var result = (from s in _context.Students
+                              where s.ClassId == classId
+                              select new StudentDTO()
+                              { StudentId = s.StudentId,
+                                  Name = s.Name,
+                              RegistrationNumber = s.RegistrationNumber,
+                              Gender = s.Gender,
+                              DOB = s.DOB,
+                              Address = s.Address,
+                              Email = s.Email
+                              }).ToList();
+
+                return result;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

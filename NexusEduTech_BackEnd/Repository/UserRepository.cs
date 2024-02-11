@@ -1,4 +1,5 @@
-﻿using NexusEduTech_BackEnd.Models;
+﻿using Microsoft.AspNetCore.Http.HttpResults;
+using NexusEduTech_BackEnd.Models;
 
 namespace NexusEduTech_BackEnd.Repository
 {
@@ -22,16 +23,22 @@ namespace NexusEduTech_BackEnd.Repository
                              where t.TeacherId == user.Id
                              select t.TeacherId;
 
-                if (studid != null && user.Role == "Student")
+                var username = from u in _context.Users where user.UserName == u.UserName
+                               select u.UserName;
+                if(username == null)
                 {
-                    _context.Users.Add(user);
-                    _context.SaveChanges();
+                    if (studid != null && user.Role == "Student")
+                    {
+                        _context.Users.Add(user);
+                        _context.SaveChanges();
+                    }
+                    else if (teachid != null && user.Role == "Teacher")
+                    {
+                        _context.Users.Add(user);
+                        _context.SaveChanges();
+                    }
                 }
-                else if  (teachid != null && user.Role == "Teacher")
-                {
-                     _context.Users.Add(user);
-                    _context.SaveChanges();
-                }
+                
             }
             catch (Exception)
             {

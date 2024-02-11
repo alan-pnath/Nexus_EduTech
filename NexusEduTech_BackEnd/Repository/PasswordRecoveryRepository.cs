@@ -24,6 +24,7 @@ namespace NexusEduTech_BackEnd.Repository
                         u.Password = newpass;
                         _context.Users.Update(u);
                         _context.SaveChanges();
+                        return ("Password Changed");
                     }
                     else
                     {
@@ -34,7 +35,7 @@ namespace NexusEduTech_BackEnd.Repository
                 {
                     return ("Invalid mail id");
                 }
-                return null;
+                
             }
             catch (Exception)
             {

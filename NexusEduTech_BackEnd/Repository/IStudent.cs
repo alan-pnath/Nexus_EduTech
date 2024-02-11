@@ -12,6 +12,8 @@ namespace NexusEduTech_BackEnd.Repository
         List<ByStd> GetByStd(string std);
         List<ByStd> GetByStdSec(string std, string sec);
         List<ByStd> GetAll();
+
+        List<StudentDTO> GetStudentsByClassId(int classId);
      
     }
 }
