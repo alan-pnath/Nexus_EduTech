@@ -158,7 +158,7 @@ namespace NexusEduTech_BackEnd.Repository
             }
         }
 
-        public string Update(StudentDTO data)
+        public string Update(Student data)
         {
             try
             {
