@@ -6,7 +6,7 @@ namespace NexusEduTech_BackEnd.Repository
     public interface IStudent
     {
         string Add(StudentDTO data);
-        string Update(StudentDTO data);
+        string Update(Student data);
         string Delete(int id);
        GetByRollNo GetByStudentId(int id);
         List<ByStd> GetByStd(string std);
