@@ -7,5 +7,9 @@
         public string RegistrationNumber { get; set; }
         public string Standard { get; set; }
         public string Section { get; set; }
+
+        public DateTime DOB { get; set; }
+        public string Address { get; set; }
+        public string Email { get; set; }
     }
 }

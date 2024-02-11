@@ -59,7 +59,10 @@ namespace NexusEduTech_BackEnd.Repository
                                 Name = s.Name,
                                 RegistrationNumber = s.RegistrationNumber,
                                 Standard = c.Standard,
-                                Section = c.Section
+                                Section = c.Section,
+                                DOB = s.DOB,
+                                Address =s.Address,
+                                Email = s.Email
                             }).ToList();
                 return item;
                 /* var items= _context.Students.ToList();
@@ -158,7 +161,7 @@ namespace NexusEduTech_BackEnd.Repository
             }
         }
 
-        public string Update(Student data)
+        public string Update(StudentDTO data)
         {
             try
             {
