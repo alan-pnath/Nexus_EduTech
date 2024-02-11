@@ -43,7 +43,7 @@ namespace NexusEduTech_BackEnd.Repository
                 foreach (var i in item)
                 {
                    
-                        if(i.Status.Equals("Present"))
+                        if(i.Status.Equals("present"))
                         {
                             NoOfPresent++;
                         }
