@@ -7,7 +7,7 @@ namespace NexusEduTech_BackEnd.Models
     public class Marks
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int MarkId { get; set; }
 
 

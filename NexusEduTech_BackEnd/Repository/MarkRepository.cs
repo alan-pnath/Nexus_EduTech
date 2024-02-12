@@ -32,14 +32,30 @@ namespace NexusEduTech_BackEnd.Repository
             }
         }
 
-        public string UpdateMark(MarksDTO data)
+        public string UpdateMark(MarksDTO data,int id)
         {
             try
             {
                 var _mark = _mapper.Map<Marks>(data);
+                _mark.MarkId = id;
                 _context.Marks.Update(_mark);
                 _context.SaveChanges();
                 return ("Mark Updated");
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        public List<MarksDTO> GetMarks()
+        {
+            try
+            {
+                var items=_context.Marks.ToList();
+                var _marks=_mapper.Map<List<MarksDTO>>(items);
+                return _marks;
+
             }
             catch (Exception)
             {

@@ -29,18 +29,32 @@ namespace NexusEduTech_BackEnd.Controllers
                 return BadRequest(ex);
             }
         }
-        [HttpPut, Route("UpdateMark")]
-        public IActionResult UpdateMark(MarksDTO data)
+        [HttpPut, Route("UpdateMark/{id}")]
+        public IActionResult UpdateMark(MarksDTO data, int id)
         {
             try
             {
-                _markRepository.UpdateMark(data);
+                _markRepository.UpdateMark(data,id);
                 return Ok("Mark Updated");
             }
             catch (Exception ex)
             {
 
                 return BadRequest(ex);
+            }
+        }
+        [HttpGet,Route("GetAllMarks")]
+        public IActionResult GetAll() 
+        {
+            try
+            {
+                return Ok(_markRepository.GetMarks());
+               
+            }
+            catch (Exception)
+            {
+
+                throw;
             }
         }
     }

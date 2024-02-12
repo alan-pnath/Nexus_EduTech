@@ -5,7 +5,7 @@ namespace NexusEduTech_BackEnd.DTOs
 {
     public class MarksDTO
     {
-     /*   public int MarkId { get; set; }*/
+        /*public int MarkId { get; set; }*/
 
         public int StudentId { get; set; }
         

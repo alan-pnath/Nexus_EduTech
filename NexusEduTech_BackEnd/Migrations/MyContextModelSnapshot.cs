@@ -82,7 +82,10 @@ namespace NexusEduTech_BackEnd.Migrations
             modelBuilder.Entity("NexusEduTech_BackEnd.Models.Marks", b =>
                 {
                     b.Property<int>("MarkId")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MarkId"));
 
                     b.Property<int>("ExamId")
                         .HasColumnType("int");

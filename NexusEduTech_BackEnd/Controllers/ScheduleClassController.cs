@@ -53,7 +53,7 @@ namespace NexusEduTech_BackEnd.Controllers
                 throw;
             }
         }
-        [HttpPut,Route("EditScheduleClass")]
+        [HttpPut,Route("EditScheduleClass/{id}")]
         public IActionResult EditScheduleClass(ScheduleClassDTO data, int id)
         {
             try
