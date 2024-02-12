@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Nexus\\BackEnd\\Nexus_EduTech\\NexusEduTech_BackEnd\\NexusEduTech_BackEnd.csproj": {}
+    "C:\\Users\\aprasena\\Training\\Nexus_EduTech\\NexusEduTech_BackEnd\\NexusEduTech_BackEnd.csproj": {}
   },
   "projects": {
-    "E:\\Nexus\\BackEnd\\Nexus_EduTech\\NexusEduTech_BackEnd\\NexusEduTech_BackEnd.csproj": {
+    "C:\\Users\\aprasena\\Training\\Nexus_EduTech\\NexusEduTech_BackEnd\\NexusEduTech_BackEnd.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Nexus\\BackEnd\\Nexus_EduTech\\NexusEduTech_BackEnd\\NexusEduTech_BackEnd.csproj",
+        "projectUniqueName": "C:\\Users\\aprasena\\Training\\Nexus_EduTech\\NexusEduTech_BackEnd\\NexusEduTech_BackEnd.csproj",
         "projectName": "NexusEduTech_BackEnd",
-        "projectPath": "E:\\Nexus\\BackEnd\\Nexus_EduTech\\NexusEduTech_BackEnd\\NexusEduTech_BackEnd.csproj",
-        "packagesPath": "C:\\Users\\asus\\.nuget\\packages\\",
-        "outputPath": "E:\\Nexus\\BackEnd\\Nexus_EduTech\\NexusEduTech_BackEnd\\obj\\",
+        "projectPath": "C:\\Users\\aprasena\\Training\\Nexus_EduTech\\NexusEduTech_BackEnd\\NexusEduTech_BackEnd.csproj",
+        "packagesPath": "C:\\Users\\aprasena\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\aprasena\\Training\\Nexus_EduTech\\NexusEduTech_BackEnd\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\asus\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\aprasena\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -90,7 +86,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

@@ -72,7 +72,10 @@ namespace NexusEduTech_BackEnd.Repository
             try
             {
                 var studattendences = _context.StudentAttendences.Where(
-                      x => x.AttendanceDate.Month == month).ToList();
+                      x => x.AttendanceDate.Month == month
+                      ).ToList();
+ 
+                
                 var item = _mapper.Map<List<StudentAttendenceDTO>>(studattendences);
                 return item;
 
@@ -84,11 +87,13 @@ namespace NexusEduTech_BackEnd.Repository
             }
         }
 
-        public void Update(StudentAttendenceDTO data)
+        public void Update(StudentAttendenceDTO data, int id)
         {
             try
             {
                 var _item = _mapper.Map<StudentAttendence>(data);
+                _item.StudAttendenceId = id;
+                _item.AttendanceDate= DateTime.Now;
                 _context.StudentAttendences.Update(_item );
                 _context.SaveChanges();
             }

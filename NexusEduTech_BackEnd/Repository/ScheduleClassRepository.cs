@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using NexusEduTech_BackEnd.DTOs;
 using NexusEduTech_BackEnd.Models;
+using System.Linq;
 
 
 namespace NexusEduTech_BackEnd.Repository
@@ -108,15 +109,45 @@ namespace NexusEduTech_BackEnd.Repository
             return std;
         }
 
-        public void EditScheduleClass(int id)
+        public void EditScheduleClass(ScheduleClassDTO data, int id)
         {
             try
             {
-                var item=_context.scheduleClass.Find(id);
-                var _class = _mapper.Map<ScheduleClass>(item);
+                var _class = _mapper.Map<ScheduleClass>(data);
+                _class.ScheduleClassId = id;        
                 _context.scheduleClass.Update(_class);
                 _context.SaveChanges();
-               
+                /* var item = _context.scheduleClass.Find(id);
+                 _context.SaveChanges();*/
+
+              /*  if (item != null)
+                {
+                    _class.ScheduleClassId = id;
+                    _context.scheduleClass.Update(_class);
+                    _context.SaveChanges();
+                }
+*/
+                /*   var flag = 0;
+                   foreach (var i in _context.scheduleClass)
+                   {
+                       if (i.ScheduleClassId == id)
+                       {
+                           flag = 1;
+                       }
+                   }
+                   if (flag == 1)
+                   {
+                       _context.scheduleClass.Update(_class);
+                       _context.SaveChanges();
+                   }*/
+                /*
+                      var item = _context.scheduleClass.First(s=>s.ScheduleClassId==data.ScheduleClassId);
+                      if (item != null)
+                      {
+                          _context.scheduleClass.Update(item);
+                          _context.SaveChanges();
+                      }*/
+
             }
             catch (Exception)
             {

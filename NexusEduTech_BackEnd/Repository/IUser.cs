@@ -1,4 +1,5 @@
-﻿using NexusEduTech_BackEnd.Models;
+﻿using NexusEduTech_BackEnd.DTOs;
+using NexusEduTech_BackEnd.Models;
 
 namespace NexusEduTech_BackEnd.Repository
 {

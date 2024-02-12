@@ -43,7 +43,7 @@ namespace NexusEduTech_BackEnd.Repository
                 foreach (var i in item)
                 {
                    
-                        if(i.Status.Equals("present"))
+                        if(i.Status.Equals("Present"))
                         {
                             NoOfPresent++;
                         }
@@ -83,11 +83,13 @@ namespace NexusEduTech_BackEnd.Repository
             }
         }
 
-        public void Update(TeacherAttendenceDTO data)
+        public void Update(TeacherAttendenceDTO data,int id)
         {
             try
             {
                 var _item = _mapper.Map<TeacherAttendence>(data);
+                _item.TeacherAttendId = id;
+                _item.AttendanceDate = DateTime.Now;
                 _context.TeacherAttendences.Update(_item);
                 _context.SaveChanges();
             }

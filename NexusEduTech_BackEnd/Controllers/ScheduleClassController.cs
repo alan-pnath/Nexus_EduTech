@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using NexusEduTech_BackEnd.DTOs;
+using NexusEduTech_BackEnd.Models;
 using NexusEduTech_BackEnd.Repository;
 
 namespace NexusEduTech_BackEnd.Controllers
@@ -52,12 +53,12 @@ namespace NexusEduTech_BackEnd.Controllers
                 throw;
             }
         }
-        [HttpPut,Route("EditScheduleClass/{id}")]
-        public IActionResult EditScheduleClass(int id)
+        [HttpPut,Route("EditScheduleClass")]
+        public IActionResult EditScheduleClass(ScheduleClassDTO data, int id)
         {
             try
             {
-                _scheduleClassRepository.EditScheduleClass(id);
+                _scheduleClassRepository.EditScheduleClass(data,id);
                 return Ok("updated");
             }
             catch (Exception)

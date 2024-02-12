@@ -56,12 +56,12 @@ namespace NexusEduTech_BackEnd.Controllers
                 throw;
             }
         }
-        [HttpPost, Route("UpdateStudentAttendence")]
-        public IActionResult Update(StudentAttendenceDTO data)
+        [HttpPost, Route("UpdateStudentAttendence/{id}")]
+        public IActionResult Update(StudentAttendenceDTO data, int id)
         {
             try
             {
-                _studentAttendenceRepository.Update(data);
+                _studentAttendenceRepository.Update(data,id);
                 return Ok(data);
             }
             catch (Exception)

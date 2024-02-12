@@ -8,7 +8,7 @@ namespace NexusEduTech_BackEnd.Models
     {
 
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Column("UserId", TypeName = "int")]
         public int UserId { get; set; }
 

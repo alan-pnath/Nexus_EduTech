@@ -9,6 +9,6 @@ namespace NexusEduTech_BackEnd.Repository
         void AddTeacherAttendence(TeacherAttendenceDTO data);
         AttendenceResult GetTeacherAttendenceById(int tid);
         List<TeacherAttendenceDTO> GetTeacherAttendencebyMonth(int month);
-        void Update(TeacherAttendenceDTO data);
+        void Update(TeacherAttendenceDTO data, int id);
     }
 }

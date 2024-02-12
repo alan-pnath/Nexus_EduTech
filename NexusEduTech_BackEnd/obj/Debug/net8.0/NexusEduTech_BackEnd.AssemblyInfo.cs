@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("NexusEduTech_BackEnd")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+21b6cdc27fa877016194275a5166b7de1744e13d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+dbfdfa57cf2e358177cb6043fd7ea9a2b3e98166")]
 [assembly: System.Reflection.AssemblyProductAttribute("NexusEduTech_BackEnd")]
 [assembly: System.Reflection.AssemblyTitleAttribute("NexusEduTech_BackEnd")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
+using NexusEduTech_BackEnd.DTOs;
 using NexusEduTech_BackEnd.Models;
 using NexusEduTech_BackEnd.Repository;
 using System.IdentityModel.Tokens.Jwt;
@@ -24,7 +25,7 @@ namespace NexusEduTech_BackEnd.Controllers
         }
 
         [HttpPost, Route("AddUser")]
-        [AllowAnonymous]
+       
         public IActionResult Adduser(User user)
         {
             try

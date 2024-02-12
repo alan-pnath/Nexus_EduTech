@@ -59,6 +59,7 @@ namespace NexusEduTech_BackEnd.Repository
                                 Name = s.Name,
                                 RegistrationNumber = s.RegistrationNumber,
                                 Standard = c.Standard,
+                                gender=s.Gender,
                                 Section = c.Section,
                                 DOB = s.DOB,
                                 Address =s.Address,
