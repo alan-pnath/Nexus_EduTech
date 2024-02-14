@@ -47,20 +47,25 @@ namespace NexusEduTech_BackEnd.Controllers
             try
             {
                 User user = _userRepository.validate(login);
-                AuthResponse response = new AuthResponse();
+                //
 
-                if (user != null)
+                if (user == null)
                 {
-                    response.Username = user.UserName;
+                    return Unauthorized(new
+                    {
+                        message = "Invalid Username and Password."
+                    }); }
+                AuthResponse response = new AuthResponse();
+                response.Username = user.UserName;
                     response.Role = user.Role;
                     response.Token = GetToken(user);
+                return Ok(response);
                 }
-                return StatusCode(200, response);
-            }
+            
             catch (Exception ex)
             {
 
-                return StatusCode(500, ex.Message);
+                return StatusCode(500, new {message=ex.Message});
             }
         }
 
